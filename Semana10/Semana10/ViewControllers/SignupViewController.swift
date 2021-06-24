@@ -10,7 +10,7 @@ class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     func setUpStyle(){
@@ -25,35 +25,39 @@ class SignupViewController: UIViewController {
         let email = UserOrEmailTextField.text!
         let password = PasswordTextField.text!
         
-        /**Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if error == nil {
-                self.performSegue(withIdentifier: "SignupSegue", sender: nil)
-                authResult.get
-                let uid = user!.user.uid
+                let user = Auth.auth().currentUser
+                let uid = user!.uid
+                let userData = [
+                    "email":user?.email,
+                    "uid": user?.uid
+                ]
                 Database.database().reference().child("usuarios").child(uid).setValue(userData)
-            }else{
+                self.performSegue(withIdentifier: "SignupSegue", sender: nil)
+            } else {
                 let alert = UIAlertController(title: "Error", message: "User or Password incorrect", preferredStyle: .alert)
                 let alertAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
                 alert.addAction(alertAction)
                 self.present(alert, animated: true, completion: nil)
             }
-        }**/
+        }
         
-        Auth.auth().createUser(withEmail: self.UserOrEmailTextField.text!, password: self.PasswordTextField.text!, completion: { (user,error) in
-                            print("Intentamos Crear un Usuario")
-                            if error == nil {
-                                print("El usuario fue creado existosamente")
-                                self.performSegue(withIdentifier: "SignupSegue", sender: nil)
-                                let userData = [
-                                    "email":user!.user.email,
-                                    "uid": user!.user.uid
-                                ]
-                                let uid = user!.user.uid
-                                Database.database().reference().child("usuarios").child(uid).setValue(userData)
-                            } else {
-                                print("Tenemos el siguiente error - 2:\(error?.localizedDescription)")
-                            }
-                        })
+        //        Auth.auth().createUser(withEmail: self.UserOrEmailTextField.text!, password: self.PasswordTextField.text!, completion: { (user,error) in
+        //                            print("Intentamos Crear un Usuario")
+        //                            if error == nil {
+        //                                print("El usuario fue creado existosamente")
+        //                                self.performSegue(withIdentifier: "SignupSegue", sender: nil)
+        //                                let userData = [
+        //                                    "email":user!.user.email,
+        //                                    "uid": user!.user.uid
+        //                                ]
+        //                                let uid = user!.user.uid
+        //                                Database.database().reference().child("usuarios").child(uid).setValue(userData)
+        //                            } else {
+        //                                print("Tenemos el siguiente error - 2:\(error?.localizedDescription)")
+        //                            }
+        //                        })
     }
     
     

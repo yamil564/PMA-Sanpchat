@@ -320,7 +320,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZN1-f0-f1b">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem systemItem="favorites" id="Agj-G7-47X"/>
@@ -328,7 +328,7 @@
                                 </items>
                             </tabBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rno-Gi-8QM">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="691"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -354,7 +354,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="rno-Gi-8QM" id="75j-dW-Beo"/>
-                        <segue destination="2dm-lX-V2G" kind="show" identifier="sersnapsegue" id="vLW-Ju-VCb"/>
+                        <segue destination="2dm-lX-V2G" kind="show" identifier="versnapsegue" id="vLW-Ju-VCb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qe6-4E-EFn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -383,7 +383,6 @@
                                 <state key="normal" title="Elegir contacto"/>
                                 <connections>
                                     <action selector="elegirContactoTapped:" destination="a5T-d0-hnc" eventType="touchUpInside" id="2MD-y0-Iae"/>
-                                    <segue destination="6JC-eg-OlC" kind="show" id="npw-g0-lVQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -412,6 +411,7 @@
                         <outlet property="descripcionTextField" destination="fUV-1D-E4V" id="pUh-kg-NHb"/>
                         <outlet property="elegirContactoBoton" destination="gkz-xG-tyf" id="oxb-Zh-iH0"/>
                         <outlet property="imageView" destination="DpT-ux-S84" id="1d1-Xq-I73"/>
+                        <segue destination="6JC-eg-OlC" kind="show" identifier="seleccionarContactoSegue" id="cpa-mN-iDh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Du2-dY-oyi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -447,7 +447,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lre-MB-Bmz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4729" y="72"/>
+            <point key="canvasLocation" x="4943" y="72"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fED-fz-Wbt">

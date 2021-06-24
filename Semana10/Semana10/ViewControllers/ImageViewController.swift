@@ -19,9 +19,9 @@ class ImageViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBOutlet weak var elegirContactoBoton: UIButton!
     
     @IBAction func cameraTapped(_ sender: Any) {
-        imagePicker.sourceType = .camera
+//        imagePicker.sourceType = .camera
         imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = false
+//         imagePicker.allowsEditing = false
         present(imagePicker, animated: true, completion: nil)
     }
     
@@ -40,14 +40,20 @@ class ImageViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         //self.performSegue(withIdentifier: "seleccionarContactoSegue", sender: metadata?.downloadURL()!.absoluteString)
         
-        
-        
+
         imageFolder.putData(imageData, metadata: nil){metadata, error in
-            imageFolder.downloadURL {url, error in
-                guard url != nil else {return}
-                
-                self.performSegue(withIdentifier: "seleccionarContactoSegue", sender: url?.absoluteString)
+            if error == nil {
+                imageFolder.downloadURL {url, error in
+                    guard url != nil else {return}
+                    print("URL")
+                    print(url?.absoluteURL)
+                    self.performSegue(withIdentifier: "seleccionarContactoSegue", sender: url?.absoluteString)
+                }
+            } else {
+                print("Error")
+                print(error?.localizedDescription)
             }
+            
         }
     }
     
