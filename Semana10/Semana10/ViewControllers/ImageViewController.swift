@@ -40,12 +40,13 @@ class ImageViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         //self.performSegue(withIdentifier: "seleccionarContactoSegue", sender: metadata?.downloadURL()!.absoluteString)
         
-        self.performSegue(withIdentifier: "seleccionarContactoSegue", sender: URL.absoluteString)
+        
         
         imageFolder.putData(imageData, metadata: nil){metadata, error in
             imageFolder.downloadURL {url, error in
                 guard url != nil else {return}
                 
+                self.performSegue(withIdentifier: "seleccionarContactoSegue", sender: url?.absoluteString)
             }
         }
     }
